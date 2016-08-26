@@ -1,0 +1,68 @@
+{
+  "TM" :{
+    "Region_Code": {
+      "hk": "Hong Kong",
+      "my": "Malaysia",
+      "cn": "MK1",
+      "tw": "Taiwan",
+      "sg": "Singapore"
+    },
+    "Nav": {
+      "Performance": "Performance",
+      "Team": "Team"
+    },
+    "PPV_Current_Month": "PPV of current month",
+    "GV_Current_Month": "GV of current month",
+    "Refresh": "Refresh",
+    "Last_Updated": "Last Update at ",
+    "OV_local": "Local: ",
+    "OV_intel": "Int'l: ",
+    "Total_OV": "Monthly Total OV",
+    "Local_Bonus": "Local bonus",
+    "Intel_Bonus": "Int'l bonus",
+    "Travel_Point": "Travel Point",
+    "TP": "TP",
+    "Month": "Month",
+    "Recruit": "Recruit.",
+    "PGV": "PGV",
+    "Total_Members": "Total Members {{total}}",
+    "New_Members": "{{newmember}} New Members",
+    "Total_Number_Included_Self": "*The total number of teams have included myself",
+    "Qualified_Legs_Number": "No. of Qualified Legs",
+    "Downline_Performance": "Downline Performance<br>(only PPV≥500PV shown)",
+    "Name": "Name",
+    "Information": "Information",
+    "Information_Reference_Only": "The above information is for reference only. Please refer to company’s announcement for actual PV",
+    "People": "People",
+    "Comma_New_Member": ", New Member: ",
+    "Ranking_List":{
+      "10": "Intern Sales Supervisor",
+      "20": "Sales Supervisor",
+      "30": "Senior Sales Supervisor",
+      "40": "Intern Sales Manager",
+      "50": "Sales Manager",
+      "60": "Senior Sales Manager",
+      "70": "Sales Director",
+      "80": "Senior Sales Director",
+      "90": "Chief Sales Director"
+    },
+    "Rule_Type_List": {
+      "dealerName": "Member Name",
+      "dealerNo": "Member No.",
+      "ranking": "Ranking"
+    },
+    "PPV_Head": "PPV: ",
+    "Wait_Bonus": "(Wait for bonus release)",
+    "Search": "Search",
+    "Clear_Filter": "Clear",
+    "Back": "Back",
+    "List": "List",
+    "Detail": "Detail",
+    "Enter_Member_Name": "Enter Member Name to Search",
+    "Enter_Member_No": "Enter Member No. to Search",
+    "PPV_Value": "PPV",
+    "GPV_Value": "GPV",
+    "OV_Value": "OV",
+    "Joined_Period": "Joined Period"
+  }
+}

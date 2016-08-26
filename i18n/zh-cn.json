@@ -1,0 +1,68 @@
+{
+  "TM" :{
+    "Region_Code": {
+      "hk": "香港",
+      "my": "马来西亚",
+      "cn": "MK1",
+      "tw": "台湾",
+      "sg": "新加坡"
+    },
+    "Nav": {
+      "Performance": "业绩表现",
+      "Team": "团队架构"
+    },
+    "PPV_Current_Month": "今月PPV",
+    "GV_Current_Month": "今月GV",
+    "Refresh": "刷新",
+    "Last_Updated": "最后更新于",
+    "OV_local": "本地: ",
+    "OV_intel": "国际: ",
+    "Total_OV": "今月总OV",
+    "Local_Bonus": "本地奖金",
+    "Intel_Bonus": "国际奖金",
+    "Travel_Point": "旅游积分",
+    "TP": "旅游积分",
+    "Month": "月份",
+    "Recruit": "推荐人数",
+    "PGV": "PGV",
+    "Total_Members": "团队总共有 {{total}} 人",
+    "New_Members": "{{newmember}} 位新加成员",
+    "Total_Number_Included_Self": "*团队总人数已包括本人",
+    "Qualified_Legs_Number": "合格组织",
+    "Downline_Performance": "组织表现(只显示PPV≥500PV)",
+    "Name": "姓名",
+    "Information": "资料",
+    "Information_Reference_Only": "以上资料仅供参考，积分额以公司最后公布为准。",
+    "People": "人",
+    "Comma_New_Member": ", New Member: ",
+    "Ranking_List":{
+      "10": "见习业务主任",
+      "20": "业务主任",
+      "30": "高级业务主任",
+      "40": "见习业务经理",
+      "50": "业务经理",
+      "60": "高级业务经理",
+      "70": "业务总监",
+      "80": "高级业务总监",
+      "90": "首席业务总监"
+    },
+    "Rule_Type_List": {
+      "dealerName": "成员姓名",
+      "dealerNo": "成员编号",
+      "ranking": "级别"
+    },
+    "PPV_Head": "个人销售业绩: ",
+    "Wait_Bonus": "(等待奖金发布)",
+    "Search": "搜索",
+    "Clear_Filter": "清除",
+    "Back": "返回",
+    "List": "名单",
+    "Detail": "细节",
+    "Enter_Member_Name": "输入成员姓名搜索",
+    "Enter_Member_No": "输入成员编号搜索",
+    "PPV_Value": "个人销售业绩",
+    "GPV_Value": "小组业绩",
+    "OV_Value": "无限代组织积分",
+    "Joined_Period": "入会年份及月份"
+  }
+}

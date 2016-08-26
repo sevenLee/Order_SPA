@@ -1,0 +1,80 @@
+<div ng-if="vm.loaderShow" class="load-area">
+    <div class="load-container load8">
+        <div class="loader"></div>
+    </div>
+</div>
+
+<div class="navigation">
+    <a href="javascript:void(0)"
+       class="arrow-left"
+       ng-click="vm.loadPrevPage()"></a>
+    <div class="title" ng-bind="vm.view.activeDateDOB | date: 'MMMM y'"></div>
+    <a href="javascript:void(0)"
+       class="arrow-right"
+       ng-class="{'disabled': vm.view.activeMonth === vm.view.currentMonth}"
+       ng-click="vm.loadNextPage()"></a>
+</div>
+
+<div class="tm-main-title"></div>
+
+<div class="tm-search-container">
+    <select class="tm-form-select" id="ruleType" name="ruleType" ng-model="vm.search.ruleType"
+            ng-options="obj.value as obj.text for obj in vm.ruleTypeList"
+            ng-change="vm.onChangeRuleType()">
+    </select>
+    <div class="tm-form-search"
+         ng-if="vm.search.ruleType === 'dealerName'"
+         ng-class="{'invalid': vm.searchInvalid}">
+        <span class="tm-form-search__control">
+        <i class="search"></i>
+        </span>
+        <input type="text" class="tm-form-search__input"
+               placeholder="{{ 'TM.Enter_Member_Name' | translate }}"
+               ng-model="vm.search.inputName">
+    </div>
+    <div class="tm-form-search"
+         ng-if="vm.search.ruleType === 'dealerNo'"
+         ng-class="{'invalid': vm.searchInvalid}">
+        <span class="tm-form-search__control">
+        <i class="search"></i>
+        </span>
+        <input type="number" class="tm-form-search__input"
+               placeholder="{{ 'TM.Enter_Member_No' | translate }}"
+               ng-model="vm.search.inputNum">
+    </div>
+
+    <select ng-if="vm.search.ruleType === 'ranking'"
+            class="tm-form-select" id="ranking" name="ranking"
+            ng-model="vm.search.ranking"
+            ng-options="obj.value as obj.text for obj in vm.rankList" >
+    </select>
+    <button class="tm-form-submit"
+            ng-click="vm.searchSubmit()" translate="TM.Search"></button>
+    <a href="javascript:void(0);" class="tm-form-clear" disabled="disabled"
+       ng-click="vm.resetPage()" translate="TM.Clear_Filter"></a>
+</div>
+<div class="tm-control clearfix">
+    <button class="tm-control__btn--nav-back tm-control__btns"
+            ng-click="vm.onBackState()"
+            ng-if="vm.searchMode || vm.downlineMode">
+        <i class="back-btn" ></i><span translate="TM.Back"></span>
+    </button>
+    <button ng-click="vm.openCollapse()"
+            ng-class="{'active': vm.activeOpenCollapse === 'open'}"
+            class="tm-control__btn--nav-detail tm-control__btns" translate="TM.Detail">
+    </button>
+    <button ng-click="vm.closeCollapse()"
+            ng-class="{'active': vm.activeOpenCollapse === 'close'}"
+            class="tm-control__btn--nav-list tm-control__btns active"
+            translate="TM.List">
+    </button>
+</div>
+
+<div class="tm-search__error-msg" ng-if="vm.searchError" ng-bind="vm.searchErrorMessage"></div>
+
+
+<tree-nodes first-node="vm.view.firstNode"
+            sub-nodes="vm.view.subNodes"
+            search-mode="vm.searchMode"
+            on-node-click="vm.nodeClickHandler(nodes, node)"
+            on-node-detail-click="vm.getDownlineByIdHandler(distributorNo, event)"></tree-nodes>

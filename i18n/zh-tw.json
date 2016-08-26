@@ -1,0 +1,68 @@
+{
+  "TM" :{
+    "Region_Code": {
+      "hk": "香港",
+      "my": "馬來西亞",
+      "cn": "MK1",
+      "tw": "台灣",
+      "sg": "新加坡"
+    },
+    "Nav": {
+      "Performance": "業績表現",
+      "Team": "團隊架構"
+    },
+    "PPV_Current_Month": "今月PPV",
+    "GV_Current_Month": "今月GV",
+    "Refresh": "刷新",
+    "Last_Updated": "最後更新於",
+    "OV_local": "本地: ",
+    "OV_intel": "國際: ",
+    "Total_OV": "今月總OV",
+    "Local_Bonus": "本地奬金",
+    "Intel_Bonus": "國際獎金",
+    "Travel_Point": "旅遊積分",
+    "TP": "旅遊積分",
+    "Month": "月份",
+    "Recruit": "推薦人數",
+    "PGV": "PGV",
+    "Total_Members": "團隊總共有 {{total}} 人",
+    "New_Members": "{{newmember}} 位新加成員",
+    "Total_Number_Included_Self": "*團隊總人數已包括本人",
+    "Qualified_Legs_Number": "合格組織",
+    "Downline_Performance": "組織表現(只顯示PPV≥500PV)",
+    "Name": "姓名",
+    "Information": "資料",
+    "Information_Reference_Only": "以上資料僅供參考，積分額以公司最後公佈為準。",
+    "People": "人",
+    "Comma_New_Member": ", New Member: ",
+    "Ranking_List":{
+      "10": "見習業務主任",
+      "20": "業務主任",
+      "30": "高級業務主任",
+      "40": "見習業務經理",
+      "50": "業務經理",
+      "60": "高級業務經理",
+      "70": "業務總監",
+      "80": "高級業務總監",
+      "90": "首席業務總監"
+    },
+    "Rule_Type_List": {
+      "dealerName": "成員姓名",
+      "dealerNo": "成員編號",
+      "ranking": "級別"
+    },
+    "PPV_Head": "個人銷售業績: ",
+    "Wait_Bonus": "(等待獎金發布)",
+    "Search": "搜索",
+    "Clear_Filter": "清除",
+    "Back": "返回",
+    "List": "名單",
+    "Detail": "細節",
+    "Enter_Member_Name": "輸入成員姓名搜索",
+    "Enter_Member_No": "輸入成員編號搜索",
+    "PPV_Value": "個人銷售業績",
+    "GPV_Value": "小組業績",
+    "OV_Value": "無限代組織積分",
+    "Joined_Period": "入會年份及月份"
+  }
+}

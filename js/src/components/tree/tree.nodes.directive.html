@@ -1,0 +1,73 @@
+<div class="tm-container">
+    <div ng-if="!ctrl.searchMode && ctrl.firstNode.level" class="tm-header">
+        <div class="tm-header__id">
+            <span>&lt;</span><span ng-bind="ctrl.firstNode.level"></span><span>&gt;</span><span ng-bind="ctrl.firstNode.distributorNo"></span>
+            <!-- if dealerPostCode != null and dealerPostCode != 0 { -->
+            <i class="vip-label vip-label--none"
+               ng-if="ctrl.firstNode.dealerPostCode !== '0' && ctrl.firstNode.dealerPostCode !== null"
+               ng-bind="ctrl.firstNode.dealerPostCode"></i>
+            <!-- } -->
+        </div>
+        <div class="tm-header__name">
+            <span ng-bind="ctrl.firstNode.dealerName"></span>
+            <!-- if marketCode != null and marketCode == 'CHN' { -->
+            <span ng-if="ctrl.firstNode.marketCode === 'CHN'"> <strong>(MK1)</strong></span>
+            <!-- } -->
+        </div>
+    </div>
+
+    <!-- slice first data from the api result when it is not search-->
+    <!-- for api result as node { -->
+    <div ng-if="ctrl.subNodes && ctrl.subNodes.length>0"
+         ng-repeat="node in ctrl.subNodes" class="tm">
+        <div class="tm__jd-title" ng-click="ctrl.onNodeClick({nodes:ctrl.subNodes, node: node})">
+            <!-- if connectByIsLeaf == 0 {-->
+            <!-- view downline of (((distributorNo)))-->
+            <a ng-if="node.connectByIsLeaf === '0'"
+               ng-click="ctrl.onNodeDetailClick({distributorNo: node.distributorNo, event:$event})"
+               scroll-to-top
+               class="tm-detail-btn"></a>
+            <!-- } -->
+
+            <div data-track="click:expand_detail" class="tm__jd-title__id tm__expander">
+                <span>&lt;</span><span ng-bind="node.level"></span><span>&gt;</span><span ng-bind="node.distributorNo"></span>
+                <!-- if dealerPostCode != null and dealerPostCode != 0 { -->
+                <i ng-if="node.dealerPostCode && node.dealerPostCode !== '0'"
+                   class="vip-label vip-label--none"
+                   ng-bind="node.dealerPostCode"></i>
+                <!-- } -->
+                <br><br>
+                <span ng-bind="node.dealerName"></span>
+                <!-- if marketCode != null and marketCode == 'CHN' { -->
+                <span ng-if="node.marketCode && node.marketCode === 'CHN'"> <strong>(MK1)</strong></span>
+                <!-- } -->
+            </div>
+
+        </div>
+        <div class="tm__inner" ng-class="{'show': node.active}">
+            <div class="tm__inner__content">
+                <div class="list">
+                    <div class="tm__inner__content__key cell" translate="TM.PPV_Value"></div>
+                    <div class="tm__inner__content__value cell"
+                         ng-bind="node.pv"></div>
+                </div>
+                <div class="list">
+                    <div class="tm__inner__content__key cell" translate="TM.GPV_Value"></div>
+                    <div class="tm__inner__content__value cell"
+                         ng-bind="node.gv"></div>
+                </div>
+                <div class="list">
+                    <div class="tm__inner__content__key cell" translate="TM.OV_Value"></div>
+                    <div class="tm__inner__content__value cell"
+                         ng-bind="node.ov"></div>
+                </div>
+                <div class="list">
+                    <div class="tm__inner__content__key cell" translate="TM.Joined_Period"></div>
+                    <div class="tm__inner__content__value cell"
+                         ng-bind="node.dealerAppDate|downlineDateFilter">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

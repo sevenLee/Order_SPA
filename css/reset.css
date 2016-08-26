@@ -1,0 +1,145 @@
+/* Reset ================================================================================= */
+* { margin:0; padding:0; }
+
+body{
+    background:#FFFFFF;
+    color: #7F7355;
+    font-family: 'Open sans',Arial,Helvetica,sans-serif,'微軟正黑體', 'Microsoft JhengHei','蘋果儷中黑', 'Apple LiGothic Medium','儷黑 Pro', 'LiHei Pro Medium';
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 24px;
+    text-align:left;
+}
+
+img           { border:0; vertical-align:top; }
+
+a             { color:#7F7355; text-decoration:none; }
+a:hover       { text-decoration:none; color:#FFA145; }
+:focus        { outline:0; }
+
+/* Headings */
+h1,h2,h3,
+h4,h5,h6      { margin:0 0 5px; line-height:1.35; color:#706342; }
+h1            { font-size:18px; font-weight:normal; }
+h2            { font-size:18px; font-weight:normal; margin-bottom:15px; }
+h3            { font-size:16px; font-weight:bold; }
+h4            { font-size:14px; font-weight:bold; }
+h5            { font-size:12px; font-weight:bold; }
+h6            { font-size:11px; font-weight:bold; }
+
+/* Forms */
+form          { display:inline; }
+fieldset      { border:0; }
+legend        { display:none; }
+
+/* Table */
+table         { border:0; /*border-collapse:collapse;*/ border-spacing:0; empty-cells:show; font-size:100%; }
+caption,th,td { vertical-align:top; text-align:left; font-weight:normal; }
+
+/* Content */
+p             { margin:0 0 10px; }
+strong        { font-weight:bold; }
+address       { font-style:normal; line-height:1.35; }
+cite          { font-style:normal; }
+q,
+blockquote    { quotes:none; }
+q:before,
+q:after       { content:''; }
+small,big     { font-size:1em; }
+/*sup           { font-size:1em; vertical-align:top; }*/
+
+/* Lists */
+ul,ol         { list-style:none; }
+
+/* Tools */
+.hidden       { display:block !important; border:0 !important; margin:0 !important; padding:0 !important; font-size:0 !important; line-height:0 !important; width:0 !important; height:0 !important; overflow:hidden !important; }
+.nobr         { white-space:nowrap !important; }
+.wrap         { white-space:normal !important; }
+.a-left       { text-align:left !important; }
+.a-center     { text-align:center !important; }
+.a-right      { text-align:right !important; }
+.v-top        { vertical-align:top; }
+.v-middle     { vertical-align:middle; }
+.f-left,
+.left         { float:left !important; }
+.f-right,
+.right        { float:right !important; }
+.f-none       { float:none !important; }
+.f-fix        { float:left; width:100%; }
+.no-display   { display:none; }
+.no-margin    { margin:0 !important; }
+.no-padding   { padding:0 !important; }
+.no-bg        { background:none !important; }
+/* ======================================================================================= */
+
+
+/* Layout ================================================================================ */
+.wrapper {}
+.page {}
+
+.header-container { }
+.nav-container1{ display:none; }
+.nav-container { margin-bottom: 0px; font-family:'Roboto','微軟正黑體', 'Microsoft JhengHei','蘋果儷中黑', 'Apple LiGothic Medium','儷黑 Pro', 'LiHei Pro Medium',Arial,Helvetica,sans-serif;}
+.footer-container { background:#F5F5F5;}
+.header-container,.nav-container,.main-container,.footer-container{}
+
+.header,.nav-inner,.main,.footer {
+    width:1070px;
+    margin:0 auto;
+    padding:0px;
+
+}
+
+.header {  position:relative; z-index:10;background:url("http://worldpay-om.ddns.net/skin/frontend/orderapp/default/css/../images/top.jpg") no-repeat top; padding-top:16px;}
+.header_top {   height:37px; }
+.header-bottom{  }
+.main { min-height:400px; padding-bottom:10px !important;}
+.footer {   padding:10px 0; width: 1070px;
+    background:transparent;
+}
+
+.page-print { background:#fff; padding:25px 30px; text-align:left; }
+.page-empty { background:#fff; padding:20px; text-align:left; }
+.page-popup { background:#fff; padding:25px 30px; text-align:left; }
+
+/* Base Columns */
+.col-left { float:left; width:220px; padding:0 0 0px; }
+.col-main { float:left; width:835px; padding:0 0 0px;}
+.col-right { float:right; width:220px; padding:0 0 0px; margin-left:15px; }
+
+/* 1 Column Layout */
+.col1-layout .col-main { float:none; width:auto; }
+
+/* 2 Columns Layout */
+.col2-left-layout .col-main { float:right; }
+.col2-right-layout .col-main {}
+
+/* 3 Columns Layout */
+.col3-layout .col-main { width:600px; margin-left:15px; }
+.col3-layout .col-wrapper { float:left; width:835px; }
+.col3-layout .col-wrapper .col-main { float:right; }
+
+/* Content Columns */
+.col2-set .col-1 { float:left; width:48.5%; }
+.col2-set .col-2 { float:right; width:48.5%; }
+.checkout-cart-index .col2-set .col-1 { float:left; width:50%; }
+.checkout-cart-index .col2-set .col-2 { float:right; width:47%; }
+.col2-set .col-narrow { width:32%; }
+.col2-set .col-wide { width:65%; }
+
+.col3-set .col-1 { float:left; width:32%; }
+.col3-set .col-1  img{width:100%   }
+.col3-set .col-2 { float:left; width:32%; margin-left:2%; }
+.col3-set .col-3 { float:right; width:32%; }
+
+.col4-set .col-1 { float:left; width:23.5%; }
+.col4-set .col-2 { float:left; width:23.5%; margin:0 2%; }
+.col4-set .col-3 { float:left; width:23.5%; }
+.col4-set .col-4 { float:right; width:23.5%; }
+
+.col2-row{ width:100%;overflow:hidden}
+.col2-row .col-1 { float:left; width:71%; }
+.col2-left-layout .col2-row .col-1 { float:left; width:71%; }
+.col2-row .col-2 { float:right; width:220px; padding-right:10px; }
+.col2-left-layout .col2-row .col-2 { float:right; width:200px; padding-right:10px; }
+.col2-row .col-2  img{width:100%   }

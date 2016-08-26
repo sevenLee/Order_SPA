@@ -1,0 +1,196 @@
+<div ng-if="vm.loaderShow" class="load-area">
+    <div class="load-container load8">
+        <div class="loader"></div>
+    </div>
+</div>
+
+<div class="navigation">
+    <a href="javascript:void(0)"
+       class="arrow-left"
+       ng-click="vm.loadPrevPage()"></a>
+    <div class="title" ng-bind="vm.view.activeDateDOB | date: 'MMMM y'"></div>
+    <a href="javascript:void(0)"
+       class="arrow-right"
+       ng-class="{'disabled': vm.view.activeMonth === vm.view.currentMonth}"
+       ng-click="vm.loadNextPage()"></a>
+</div>
+<div ng-if="vm.pageState === 0" class="last-update">
+    <a href="javascript:void(0)"
+       ng-click="vm.reload()"
+       translate="TM.Refresh"></a>
+    <span class="date" ng-if="vm.getApiSuccess">
+        <span translate="TM.Last_Updated"></span><span ng-bind="vm.localTime | date: 'yyyy/MM/dd, hh:mma'"></span>
+    </span>
+</div>
+<div class="content">
+
+    <h3 ng-if="vm.pageState === 0" class="sale-name">
+        <span ng-bind="vm.view.balanceObj.fullName"></span><br>
+        <span ng-bind="vm.view.balanceObj.position"></span>
+    </h3>
+
+    <div ng-if="vm.pageState === 0" class="current-summary">
+        <div class="title" translate="TM.PPV_Current_Month"></div>
+        <div ng-bind="vm.view.balanceObj.PPV">0</div>
+        <div class="title" translate="TM.GV_Current_Month"></div>
+        <div ng-bind="vm.view.balanceObj.GPV">0</div>
+    </div>
+
+    <div ng-if="vm.pageState !== 0" class="report-ppv"><span translate="TM.PPV_Head"></span><span ng-bind="vm.view.cacheReportObj.PPV"></span></div>
+
+    <div class="table-gvov">
+        <div class="gvov-header">OV</div>
+        <div class="gvov-middle">
+            <span translate="TM.OV_local"></span><span ng-bind="vm.view.teamBalanceObj.localOV"></span>
+            <br> <span translate="TM.OV_intel"></span><span ng-bind="vm.view.teamBalanceObj.intlOV"></span>
+        </div>
+        <div class="gvov-last"><span translate="TM.Total_OV"></span>
+            <div class="total-gvov" ng-bind="vm.view.teamBalanceObj.totalOV">0</div>
+        </div>
+    </div>
+
+    <div class="table-bonus">
+        <div class="bonus-header">
+            <div><span translate="TM.Local_Bonus"></span>
+                                        <span ng-if="vm.view.bonusObj.localPeriod">
+                                        (<span ng-bind="vm.view.bonusObj.localPeriod|tmPeriodFilter:vm.currentMonthParams:'local'"></span><span>)</span>
+                                        </span>
+            </div>
+            <div><span translate="TM.Intel_Bonus"></span>
+                                        <span ng-if="vm.view.bonusObj.intlPeriod">
+                                        (<span ng-bind="vm.view.bonusObj.intlPeriod|tmPeriodFilter:vm.currentMonthParams:'intl'"></span><span>)</span>
+                                        </span>
+            </div>
+        </div>
+        <div class="bonus-balance">
+            <div>
+                                        <span ng-if="vm.view.bonusObj.localUpdateFlag && vm.view.bonusObj.localUpdateFlag === 'Y'"
+                                              ng-bind="vm.view.bonusObj.curCodeBonus"></span>
+                &nbsp;
+                                        <span ng-if="vm.view.bonusObj.localUpdateFlag && vm.view.bonusObj.localUpdateFlag === 'Y'"
+                                              ng-bind="vm.view.bonusObj.localBonus"></span>
+                                        <span
+                                              class="no-data"
+                                              translate="TM.Wait_Bonus"></span>
+            </div>
+            <div>
+                                        <span ng-if="vm.view.bonusObj.intlUpdateFlag && vm.view.bonusObj.intlUpdateFlag === 'Y'"
+                                              ng-bind="vm.view.bonusObj.curCodeBonus"></span>
+                &nbsp;
+                                        <span ng-if="vm.view.bonusObj.intlUpdateFlag && vm.view.bonusObj.intlUpdateFlag === 'Y'"
+                                              ng-bind="vm.view.bonusObj.intlBonus">0</span>
+                                        <span ng-if="vm.view.bonusObj.intlUpdateFlag && vm.view.bonusObj.intlUpdateFlag ==='N'"
+                                              class="no-data"
+                                              translate="TM.Wait_Bonus"></span>
+            </div>
+        </div>
+    </div>
+
+    <div ng-if="vm.pageState === 0" class="table-tp">
+        <div class="bonus-title" translate="TM.Travel_Point"></div>
+        <div class="bonus-header">
+            <div translate="TM.Month"></div>
+            <div translate="TM.TP"></div>
+            <div translate="TM.Recruit"></div>
+            <div translate="TM.PGV"></div>
+        </div>
+        <div class="tp-balance"
+             ng-if="!vm.view.travelPointObj.travelDataStr" >
+            <div class="month">&nbsp;</div>
+            <div>&nbsp;</div>
+            <div>&nbsp;</div>
+            <div>&nbsp;</div>
+        </div>
+        <div class="tp-balance"
+             ng-if="vm.view.travelPointObj.travelDataStr" >
+            <div class="month">
+                <span ng-bind-html="vm.view.travelPointObj.travelDataStr|tmTravelPointDateFilter:vm.view.travelPointObj.FromDate:vm.view.travelPointObj.ToDate"></span>
+            </div>
+            <div>
+                <span ng-bind="vm.view.travelPointObj.TP"></span>
+            </div>
+            <div>
+                <span ng-bind="vm.view.travelPointObj.Recruit"></span>
+            </div>
+            <div>
+                <span ng-bind="vm.view.travelPointObj.PGV"></span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="content-grey">
+    <div class="member-header">
+        <span class="member-ico"></span>
+        <h3 class="header-total-member" >
+            <span translate="TM.Total_Members"
+                  translate-value-total="{{vm.view.teamObj.total}}"></span> ( <span class="subheading" translate="TM.New_Members" translate-value-newmember="{{vm.view.teamObj.totalNew}}"></span> )</h3>
+    </div>
+
+    <ul class="team-distribution">
+        <li ng-repeat="item in vm.view.teamObj.region">
+            <span ng-if="item.regionCode" class="label" ng-bind="item.regionCode"></span>
+            <span ng-if="item.regionCode" class="colon">: </span>
+            <span ng-if="item.total" class="count" ng-bind="item.total"></span>
+            <span ng-if="!item.total" class="count">0</span>
+            <span ng-if="item.new&&item.new>0" class="count-change"> (&nbsp;<span ng-bind="item.new"></span><span>&nbsp;)</span></span>
+            <br/>
+        </li>
+    </ul>
+    <p translate="TM.Total_Number_Included_Self"></p>
+</div>
+
+<div class="content">
+    <h4 class="center-title" translate="TM.Qualified_Legs_Number"></h4>
+    <div class="qualified-legs-bar">
+        <div class="bar-500k"
+             ng-style="{width: vm.view.teamObj.cnt500k}"
+             style="width: 33.33%">500K</div>
+        <div class="bar-100k"
+             ng-style="{width: vm.view.teamObj.cnt100k}"
+             style="width: 33.33%">100K</div>
+        <div class="bar-10k"
+             ng-style="{width: vm.view.teamObj.cnt10k}"
+             style="width: 33.33%">10K</div>
+    </div>
+    <div class="qualified-legs-legend">
+        <div class="legend-500k"
+             ng-style="{width: vm.view.teamObj.cnt500k}"
+             style="width: 33.33%">
+            <span ng-bind="vm.view.teamObj.cnt.cnt500K"></span>
+            <span translate="TM.People"></span>
+        </div>
+        <div class="legend-100k"
+             ng-style="{width: vm.view.teamObj.cnt100k}"
+             style="width: 33.33%">
+            <span ng-bind="vm.view.teamObj.cnt.cnt100K"></span>
+            <span translate="TM.People"></span>
+        </div>
+        <div class="legend-10k"
+             ng-style="{width: vm.view.teamObj.cnt10k}"
+             style="width: 33.33%">
+            <span ng-bind="vm.view.teamObj.cnt.cnt10K"></span>
+            <span translate="TM.People"></span>
+        </div>
+    </div>
+</div>
+<div ng-if="vm.pageState === 0" class="content-grey">
+    <h4 class="center-title" translate="{{ 'TM.Downline_Performance' }}"></h4>
+    <div class="downline-wrapper">
+        <div class="header-row">
+            <div class="downline-col-name" translate="TM.Name"></div>
+            <div class="downline-col-info" translate="TM.Information"></div>
+        </div>
+        <div ng-repeat="item in vm.view.downLineObj.downline" class="body-row">
+            <div class="downline-col-name" ng-bind="item.fullName"></div>
+            <div class="downline-col-info">OV :
+                <span ng-if="item.totalOV">
+                    <span ng-bind="item.totalOV"></span>
+                    <span translate="TM.Comma_New_Member"></span>
+                    <span ng-bind="item.totalNew"></span>
+                </span>
+            </div>
+        </div>
+    </div>
+    <br>
+    <p class="center-title" translate="TM.Information_Reference_Only"></p>
+</div>

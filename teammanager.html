@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<!-- saved from url=(0048)http://worldpay-om.ddns.net/my_zh_tw/teammanager -->
+<html ng-app="teamManageApp" xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- Palm -->
+<meta name="HandheldFriendly" content="True">
+<!-- Windows -->
+<meta name="MobileOptimized" content="320">
+<!-- Safari, Android, BB, Opera -->
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Infinitus eShop</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="robots" content="NOINDEX,NOFOLLOW">
+<link rel="icon" href="http://worldpay-om.ddns.net/skin/frontend/orderapp/default/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="http://worldpay-om.ddns.net/skin/frontend/orderapp/default/favicon.ico" type="image/x-icon">
+<!--<link href='https://fonts.googleapis.com/css?family=Roboto:400' rel='stylesheet' type='text/css' />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css' />
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css' />-->
+<!-- <meta property="og:title" content="Infinitus eShop"> -->
+<meta property="og:title" content="無限極 - 網上商店">
+<meta property="og:site_name" content="無限極 - 網上商店">
+<meta property="og:description" content="">
+<meta property="og:image" content="http://worldpay-om.ddns.net/skin/frontend/orderapp/default/images/logo_facebook_v2.jpg">
+
+
+<!--<link rel="stylesheet" type="text/css" href="./teammanager_files/423721ab1c5061fbe21e5e9d93c4c957.css">-->
+<!--<link rel="stylesheet" type="text/css" href="./teammanager_files/999db498e9e80c43d29f71e421450fd9.css" media="all">-->
+<link rel="stylesheet" type="text/css" href="css/reset.css">
+<link rel="stylesheet" type="text/css" href="css/base.css">
+<link rel="stylesheet" type="text/css" href="css/print.css" media="print">
+
+<script type="text/javascript" src="./teammanager_files/html5.js"></script>
+<script type="text/javascript" src="./teammanager_files/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="./teammanager_files/jquery-migrate-1.2.1.min.js"></script>
+<!--<script type="text/javascript" src="./teammanager_files/jquery.selectbox-0.2.min.js"></script>-->
+<!--<script type="text/javascript" src="./teammanager_files/jquery-ui.min.js"></script>-->
+<!--<base href="/teammanager_distributor/teammanager.html">-->
+<script src="js/lib/crypto-js/core.js"></script>
+<script src="js/lib/crypto-js/enc-base64.js"></script>
+<script src="js/lib/crypto-js/sha256.js"></script>
+<script src="js/lib/crypto-js/cipher-core.js"></script>
+<script src="js/lib/crypto-js/aes.js"></script>
+<script src="js/lib/crypto-js/mode-ecb.js"></script>
+<script src="js/lib/crypto-js/pad-pkcs7.js"></script>
+<script src="js/lib/lodash.js"></script>
+
+<script src="js/lib/angular.js"></script>
+<script src="js/lib/angular-sanitize.js"></script>
+
+<script src="js/lib/angular-cookies.js"></script>
+<script src="js/lib/angular-translate.js"></script>
+<script src="js/lib/angular-translate-loader-static-files.js"></script>
+<script src="js/lib/ngStorage.js"></script>
+
+
+<script src="js/lib/angular-ui-router.js"></script>
+<script src="js/lib/angular-jwt.js"></script>
+<script src="js/lib/moment.js"></script>
+<script src="js/lib/ui-router-route-to-components.js"></script>
+<script src="js/src/tmapp.js"></script>
+<script src="js/src/tmapp.init.js"></script>
+<script src="js/src/config.http.interceptor.js"></script>
+
+<script src="js/src/components/score/score.directive.js"></script>
+<script src="js/src/components/tree/tree.component.js"></script>
+<script src="js/src/components/tree/tree.nodes.directive.js"></script>
+
+<script src="js/src/service/lang.service.js"></script>
+<script src="js/src/service/storage.service.js"></script>
+<script src="js/src/service/access.token.service.js"></script>
+<script src="js/src/service/http.buffer.service.js"></script>
+
+
+
+<script src="js/src/service/authapi.service.js"></script>
+<script src="js/src/service/authapi.factory.js"></script>
+<script src="js/src/service/scoreapi.service.js"></script>
+<script src="js/src/service/treeapi.service.js"></script>
+
+<script src="js/src/service/decrypt.service.js"></script>
+<script src="js/src/service/filter.js"></script>
+<script src="js/src/util/layout.util.js"></script>
+
+
+</head>
+<body class="teammanager-index-index"
+      ng-controller="TeamManagerCtrl as vm"
+      ng-class="{'teammanager-tree': $state.current.name === 'tree'}">
+
+<div class="wrapper" >
+        <noscript>
+        &lt;div class="global-site-notice noscript"&gt;
+            &lt;div class="notice-inner"&gt;
+                &lt;p&gt;
+                    &lt;strong&gt;你的瀏覽器似乎禁用了 JavaScript。&lt;/strong&gt;&lt;br /&gt;
+                    您必須在瀏覽器中啟用JavaScript才能使用本網站的功能。                &lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    </noscript>
+    <div class="page">
+        <section class="main-container col1-layout">
+            <h2 style="display:none;">&nbsp;</h2>
+            <div class="main">
+                <article class="col-main">
+                    <div class="sales-tool team-manager zh_tw team-manager-distributor"
+                        ng-class="{'en_us': vm.currentLang === 'en'}">
+                        <!--<div ng-if="vm.loaderShow" class="load-area">-->
+                            <!--<div class="load-container load8">-->
+                                <!--<div class="loader"></div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <div style="position: fixed; z-index: 100;">
+                            <button class="btn" ng-click="vm.setLanguage('zh-tw')" >Tw</button>
+                            <button class="btn" ng-click="vm.setLanguage('en')" >En</button>
+                            <button class="btn" ng-click="vm.setLanguage('zh-cn')" >Cn</button>
+                        </div>
+
+                        <div class="page-headers-tabs">
+                            <div class="page-tab">
+                                <a ui-sref="score"
+                                   ui-sref-active="active"
+                                   translate="TM.Nav.Performance"></a>
+                            </div>
+                            <div class="page-tab">
+                                <a ui-sref="tree"
+                                   ui-sref-active="active"
+                                   ui-sref-opts="{reload: true, inherit: false, notify: true}"
+                                   translate="TM.Nav.Team"></a>
+                            </div>
+                        </div>
+
+                        <div ui-view></div>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </div>
+</div>
+
+</body>
+</html>
