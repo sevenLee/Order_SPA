@@ -94,7 +94,7 @@
     }]);
 
 
-    tmApp.controller('TeamManagerCtrl', ['$rootScope', '$scope', '$translate', 'LangService', 'AccessToken', function ($rootScope, $scope, $translate, LangService, AccessToken) {
+    tmApp.controller('TeamManagerCtrl', ['$rootScope', '$scope', '$translate', function ($rootScope, $scope, $translate) {
         var vm = this;
 
         vm.currentLang = $rootScope.activeLangCode;
@@ -121,43 +121,4 @@
     }]);
 
 
-    //tmApp.service('APIInterceptor', ['$q', '$rootScope', 'AccessToken', function($q, $rootScope, AccessToken){
-    //    var self = this;
-    //
-    //    self.request = function (config){
-    //        console.log('[Interceptor Request]: In!!');
-    //
-    //        config.headers = config.headers || {};
-    //
-    //        var acsToken = AccessToken.getToken();
-    //        var isExpired = AccessToken.isExpired();
-    //
-    //        console.log('[Interceptor Request] isExpired:', isExpired);
-    //
-    //        if(acsToken && AccessToken.isExpired()){
-    //            console.log('===== has access token, but expired =====');
-    //
-    //            $rootScope.$broadcast('AccessToken:expired', acsToken);
-    //        }
-    //
-    //        if(acsToken && !AccessToken.isExpired()){
-    //            console.log('===== has access token, no expired =====');
-    //
-    //            config.headers['X-Access-Token'] = acsToken.token;
-    //        }
-    //
-    //
-    //        return config || $q.when(config);
-    //    };
-    //
-    //    self.response = function (response) {
-    //        console.log('[response.config.url]:', response.config.url);
-    //
-    //        return response;
-    //    };
-    //
-    //    self.responseError = function (reason) {
-    //
-    //    };
-    //}]);
 })();

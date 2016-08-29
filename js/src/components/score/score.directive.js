@@ -8,7 +8,7 @@
             scope: {},
             bindToController: true,
             controllerAs: 'vm',
-            controller: ['$rootScope', '$scope', '$q', '$filter', '$translate', '$sce', 'DistributorsAPI', 'DecryptService', 'AccessToken', 'AuthAPIFactory', function ScoreController($rootScope, $scope, $q, $filter, $translate, $sce, DistributorsAPI, DecryptService, AccessToken, AuthAPIFactory) {
+            controller: ['$rootScope', '$scope', '$q', '$filter', '$translate', '$sce', 'DistributorsAPI', 'DecryptService', function ScoreController($rootScope, $scope, $q, $filter, $translate, $sce, DistributorsAPI, DecryptService) {
                 var vm = this;
 
                 vm.count             = 0;
@@ -497,33 +497,6 @@
                     vm.setState();
                     vm.watchingScope();
 
-
-                    /*
-                    var acsToken = AccessToken.getToken();
-
-                    if(!acsToken){
-                        AuthAPIFactory.getAccessToken().then(function(){
-                                vm.DOBSetting();
-                                vm.setState();
-                                vm.watchingScope();
-                            }
-                        );
-                    }else {
-                        if(AccessToken.isValid()) {
-                            vm.DOBSetting();
-                            vm.setState();
-                            vm.watchingScope();
-                        }else{
-                            //call renew
-                            console.log('call renew');
-                            AuthAPIFactory.getAccessToken().then(function(){
-                                    vm.DOBSetting();
-                                    vm.setState();
-                                    vm.watchingScope();
-                                }
-                            );
-                        }
-                    }*/
                 }
             }]
         };
