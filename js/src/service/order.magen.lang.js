@@ -1,8 +1,14 @@
 (function(){
   'use strict';
-  var tmApp = angular.module('teamManageApp');
+  var orderLang;
 
-  tmApp.service('LangService',['$cookies', function($cookies) {
+  try{
+    orderLang = angular.module('order.magen.lang');
+  } catch(err) {
+    orderLang = angular.module('order.magen.lang', []);
+  }
+
+  orderLang.service('MagenLangService',['$cookies', function($cookies) {
     var self = this;
 
     self.setExpiredTime = function(expiredTimePeriod) {
