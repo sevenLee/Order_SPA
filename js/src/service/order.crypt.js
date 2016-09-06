@@ -1,8 +1,15 @@
 (function() {
     'use strict';
-    var tmApp = angular.module('teamManageApp');
+    var orderCrypt;
 
-    tmApp.service('DecryptService', ['apiParams', function(apiParams) {
+    try{
+        orderCrypt = angular.module('order.crypt');
+    } catch(err) {
+        orderCrypt = angular.module('order.crypt', []);
+    }
+
+
+    orderCrypt.service('DecryptService', ['apiParams', function(apiParams) {
         var self = this;
 
         self.decryptData = function(encryptedText) {
@@ -22,6 +29,12 @@
 
 
         self.encryptData = function(data) {
+            console.log('receive data:', data);
+
+
+            return ;
+
+
             var keyWordArray = CryptoJS.SHA256(apiParams.secret);
             var jsonString = JSON.stringify(data);
 
@@ -30,7 +43,15 @@
                 padding: CryptoJS.pad.Pkcs7
             });
 
-            return encryptedData.ciphertext.toString();
+            //var encryptedDataArray = CryptoJS.enc.Utf8.parse(encryptedData.ciphertext.toString());
+            //var encryptedData64 = CryptoJS.enc.Base64.stringify(encryptedDataArray);
+            //console.log('1 encryptedData64:', encryptedData64);
+
+            var encryptedData642 = CryptoJS.enc.Base64.stringify(encryptedData.ciphertext);
+            console.log('2 encryptedData64:', encryptedData642);
+
+
+            return encryptedData642;
         }
     }]);
 

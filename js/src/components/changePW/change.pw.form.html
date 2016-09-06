@@ -1,0 +1,106 @@
+
+<div>
+    <form id="form-validate" name="vm.changePwForm" novalidate>
+    <div class="fieldset">
+        <input name="form_key" type="hidden" value="L3eJjwwejLAh7lge" />
+        <ul class="form-list">
+            <li class="fields">
+                <div class="field">
+                    <label for="current">請輸入現有密碼</label>
+                    <div class="input-box">
+                        <input type="number"
+                               name="current"
+                               id="current" value=""
+                               class="input-text required-entry validate-password secure-input"
+                               ng-model= "vm.current"
+                               valid-pw-count
+                               field-name="changePw:current"
+                               ng-required="true"
+                               ga-track
+                               track-action="on_focus"
+                               track-label="current_password" />
+                        <span class="input-hint"
+                              ng-if="vm.changePwForm.current.$error.required && vm.changePwForm.current.$touched">
+                            必須填入密碼
+                        </span>
+                        <span class="input-hint"
+                              ng-if="vm.changePwForm.current.$error.pwCount && vm.changePwForm.current.$touched">
+                            必須為四位數字
+                        </span>
+                    </div>
+                </div>
+            </li>
+            <li class="fields">
+                <div class="field">
+                    <label for="new">請輸入新密碼</label>
+                    <div class="input-box">
+                        <input type="number"
+                               name="new"
+                               id="new"
+                               value=""
+                               class="input-text required-entry validate-new-password secure-input"
+                               ng-model= "vm.new"
+                               valid-pw-count
+                               field-name="changePw:new"
+                               ng-required="true"
+                               ga-track
+                               track-action="on_focus"
+                               track-label="new_password"/>
+                        <span class="input-hint"
+                              ng-if="vm.changePwForm.new.$error.required && vm.changePwForm.new.$touched">
+                            必須填入密碼
+                        </span>
+                        <span class="input-hint"
+                              ng-if="vm.changePwForm.new.$error.pwCount && vm.changePwForm.new.$touched">
+                            必須為四位數字
+                        </span>
+                    </div>
+                </div>
+            </li>
+            <li class="fields">
+                <div class="field">
+                    <label for="confirmNew">再次輸入新密碼</label>
+                    <div class="input-box">
+                        <input type="number"
+                               name="confirmNew"
+                               id="confirmNew"
+                               value=""
+                               class="input-text required-entry validate-confirm-password secure-input"
+                               ng-model= "vm.confirmNew"
+                               valid-pw-count
+                               field-name="changePw:confirmNew"
+                               valid-pw-confirm
+                               valid-pw-new = {{vm.viewModal.newPassCode}}
+                               ng-required="true"
+                               ga-track
+                               track-action="on_focus"
+                               track-label="confirm_password"/>
+                        <span class="input-hint"
+                              ng-if="vm.changePwForm.confirmNew.$error.required && vm.changePwForm.confirmNew.$touched">
+                            必須填入密碼
+                        </span>
+                        <span class="input-hint"
+                              ng-if="vm.changePwForm.confirmNew.$error.pwCount && vm.changePwForm.confirmNew.$touched">
+                            必須為四位數字
+                        </span>
+                        <span class="input-hint"
+                              ng-if="vm.changePwForm.confirmNew.$error.pwConfirm && vm.changePwForm.confirmNew.$touched">
+                            確認的新密碼不相符，請再次輸入
+                        </span>
+                    </div>
+                </div>
+            </li>
+            <li class="fields centered">
+                <div class="field">
+                    <button id="change-pw-btn" type="submit" title="更改密碼" class="button"
+                            data-track="click:change_password"
+                            ga-track
+                            track-action="click"
+                            track-label="change_password"><span><span id="submit-button-text">更改密碼</span></span></button>
+                </div>
+            </li>
+        </ul>
+
+    </div>
+</form>
+</div>

@@ -25,21 +25,19 @@ var App = function($) {
 		init: function() {
 			$('body').on('click', '[data-track^="click:"]', function() {
 				var data = $(this).data('track').split(':');
-                                                                    var value = typeof distributorID == "undefined" ? null :  {'dimension3': distributorID};
+                var value = typeof distributorID == "undefined" ? null :  {'dimension3': distributorID};
 				tracking.trackEvent(data[0], data[1],value);
 			}).on('focus', '[data-track^="on_focus:"]', function() {
 				var data = $(this).data('track').split(':');
-                                                                     var value = typeof distributorID == "undefined" ? null :  {'dimension3': distributorID};
+                var value = typeof distributorID == "undefined" ? null :  {'dimension3': distributorID};
 				tracking.trackEvent(data[0], data[1],value);
 			});
 		},
 		trackView: function(name) {
 			try {
 				tracking.screenName = name;
-                                                                      //ga('set', 'title',name);
-				//ga('send', 'pageview');
-                                                                    var value = typeof distributorID == "undefined" ? null :  {'dimension3': distributorID};
-                                                                     ga('send', 'event', tracking.screenName, "view",  "view",value);
+                var value = typeof distributorID == "undefined" ? null :  {'dimension3': distributorID};
+                ga('send', 'event', tracking.screenName, "view",  "view",value);
                                                       
 			} catch (e) {}
 		},
