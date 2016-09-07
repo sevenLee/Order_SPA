@@ -15,6 +15,8 @@
                 vm.viewModal = {};
                 vm.formInvalid = false;
                 vm.formInvalidMsg = '';
+                vm.successSubmit = false;
+                vm.successSubmitMsg = '';
             }],
             link: function(scope, element, attrs){
                 scope.$on('changePw:current', function(event, data){
@@ -61,10 +63,14 @@
                             data: encryptString
                         }).then(function(response){
                             jqSpan.text(beforeSubmitTxt);
+                            scope.vm.formInvalid = false;
+                            scope.vm.successSubmit = true;
+                            scope.vm.successSubmitMsg = response.data.message;
                         }, function(error) {
+                            console.log(error);
                             jqSpan.text(beforeSubmitTxt);
                             scope.vm.formInvalid = true;
-                            scope.vm.formInvalidMsg = 'Submit Error';
+                            scope.vm.formInvalidMsg = error.data.error.message || 'Submit error';
                         });
                     }else{
                         scope.vm.formInvalid = true;

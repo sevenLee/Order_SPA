@@ -15,9 +15,11 @@
                 vm.viewModal = {};
                 vm.formInvalid = false;
                 vm.formInvalidMsg = '';
+                vm.successSubmit = false;
+                vm.successSubmitMsg = '';
             }],
             link: function(scope, element, attrs){
-                scope.$on('resetPw:current', function(event, data){
+                scope.$on('resetPw:idno', function(event, data){
                     scope.vm.viewModal.passCode = data;
                 });
 
@@ -55,10 +57,12 @@
                         }).then(function(response){
                             scope.vm.formInvalid = false;
                             jqSpan.text(beforeSubmitTxt);
+                            scope.vm.successSubmit = true;
+                            scope.vm.successSubmitMsg = response.data.message;
                         }, function(error) {
                             jqSpan.text(beforeSubmitTxt);
                             scope.vm.formInvalid = true;
-                            scope.vm.formInvalidMsg = 'Submit Error';
+                            scope.vm.formInvalidMsg = error.data.error.message || 'Submit error';
                         });
                     }else{
                         scope.vm.formInvalid = true;

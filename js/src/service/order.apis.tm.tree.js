@@ -1,9 +1,16 @@
 
 (function() {
     'use strict';
-    var tmApp = angular.module('teamManageApp');
 
-    tmApp.service('TreeAPI', ['$http', 'apiParams', function($http, apiParams) {
+    var orderAPITMTree;
+
+    try{
+        orderAPITMTree = angular.module('order.apis.tm.tree');
+    } catch(err) {
+        orderAPITMTree = angular.module('order.apis.tm.tree', []);
+    }
+
+    orderAPITMTree.service('TreeAPI', ['$http', 'apiParams', function($http, apiParams) {
         var self = this;
 
         self.getNodesByRule = function(key, value, activeMonthParams) {
@@ -74,5 +81,4 @@
             }
         };
     }]);
-
 })();

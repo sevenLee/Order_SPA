@@ -1,8 +1,15 @@
 (function() {
     'use strict';
-    var tmApp = angular.module('teamManageApp');
 
-    tmApp.directive('scrollToTop', function() {
+    var orderWidgetsLayout;
+
+    try{
+        orderWidgetsLayout = angular.module('order.widgets.layout');
+    } catch(err) {
+        orderWidgetsLayout = angular.module('order.widgets.layout', []);
+    }
+
+    orderWidgetsLayout.directive('scrollToTop', function() {
         return {
             restrict: 'A',
             link: function(scope, $elm) {

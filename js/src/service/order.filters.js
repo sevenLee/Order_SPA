@@ -1,8 +1,15 @@
 (function() {
     'use strict';
-    var tmApp = angular.module('teamManageApp');
 
-    tmApp.filter('downlineDateFilter', function(){
+    var orderFilters;
+
+    try{
+        orderFilters = angular.module('order.filters');
+    } catch(err) {
+        orderFilters = angular.module('order.filters', []);
+    }
+
+    orderFilters.filter('downlineDateFilter', function(){
         return function(date){
             if(date) {
                 return date.slice(0, 7);
@@ -10,7 +17,7 @@
         }
     });
 
-    tmApp.filter('tmPeriodFilter', function(){
+    orderFilters.filter('tmPeriodFilter', function(){
         return function(period, currentMonthParams, env){
             var currentYear = parseInt(currentMonthParams.slice(0, 4));
             var currentMonth = (currentMonthParams.charAt(4) === '0') ? currentMonthParams.charAt(5) : currentMonthParams.slice(4);
@@ -45,7 +52,7 @@
         }
     });
 
-    tmApp.filter('tmTravelPointDateFilter', function(){
+    orderFilters.filter('tmTravelPointDateFilter', function(){
         return function(dateStr, fromDate, toDate){
             if(!fromDate || !toDate){
                 return '&nbsp;';
