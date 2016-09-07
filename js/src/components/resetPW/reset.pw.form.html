@@ -1,0 +1,60 @@
+<ul ng-if="vm.formInvalid" class="messages">
+    <li class="error-msg">
+        <ul>
+            <li>
+                <span ng-bind="vm.formInvalidMsg"></span>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<form id="form-validate" name="vm.resetPwForm" novalidate>
+    <div class="fieldset">
+        <input name="form_key" type="hidden" value="GSWvkea0iX1tYPUW" />
+        <ul class="form-list">
+            <li class="fields">
+                <div class="field">
+                    <label for="idno">請輸入已登記之証件號碼頭4位數字:</label>
+                    <div class="input-box">
+                        <input type="number"
+                               pattern="[0-9]*"
+                               inputmode="numeric"
+                               name="idno"
+                               id="idno"
+                               maxlength="4"
+                               value=""
+                               class="input-text required-entry validate-idno secure-input"
+                               ng-model= "vm.idno"
+                               valid-pw-count
+                               field-name="resetPw:idno"
+                               ng-required="true"
+                               ga-track
+                               track-action="on_focus"
+                               track-label="id_card" />
+                    </div>
+                    <span class="input-invalid-hint"
+                          ng-if="vm.resetPwForm.idno.$error.required && vm.resetPwForm.idno.$touched">
+                            必須填入已登記之証件號碼頭4位數字
+                    </span>
+                    <span class="input-invalid-hint"
+                          ng-if="vm.resetPwForm.idno.$error.pwCount && vm.resetPwForm.idno.$touched">
+                            必須為4位數字
+                    </span>
+                </div>
+            </li>
+            <li class="fields centered">
+                <div class="field">
+                    <button id="reset-pw-btn" type="submit" title="重設密碼" class="button"
+                            ga-track
+                            track-action="click"
+                            track-label="reset_password"><span><span id="submit-button-text">重設密碼</span></span></button>
+                </div>
+            </li>
+            <li class="fields centered">
+                <div class="field remark">
+                    如需協助，請聯絡您所在地區的客戶服務部<br><a href='http://www.infinitus-igi.com/'>http://www.infinitus-igi.com/</a>                </div>
+            </li>
+        </ul>
+
+    </div>
+</form>

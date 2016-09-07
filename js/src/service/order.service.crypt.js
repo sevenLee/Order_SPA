@@ -1,15 +1,15 @@
 (function() {
     'use strict';
-    var orderCrypt;
+    var orderServiceCrypt;
 
     try{
-        orderCrypt = angular.module('order.crypt');
+        orderServiceCrypt = angular.module('order.service.crypt');
     } catch(err) {
-        orderCrypt = angular.module('order.crypt', []);
+        orderServiceCrypt = angular.module('order.service.crypt', []);
     }
 
 
-    orderCrypt.service('DecryptService', ['apiParams', function(apiParams) {
+    orderServiceCrypt.service('DecryptService', ['apiParams', function(apiParams) {
         var self = this;
 
         self.decryptData = function(encryptedText) {
@@ -29,12 +29,6 @@
 
 
         self.encryptData = function(data) {
-            console.log('receive data:', data);
-
-
-            return ;
-
-
             var keyWordArray = CryptoJS.SHA256(apiParams.secret);
             var jsonString = JSON.stringify(data);
 
@@ -43,15 +37,9 @@
                 padding: CryptoJS.pad.Pkcs7
             });
 
-            //var encryptedDataArray = CryptoJS.enc.Utf8.parse(encryptedData.ciphertext.toString());
-            //var encryptedData64 = CryptoJS.enc.Base64.stringify(encryptedDataArray);
-            //console.log('1 encryptedData64:', encryptedData64);
+            var encryptedData64 = CryptoJS.enc.Base64.stringify(encryptedData.ciphertext);
 
-            var encryptedData642 = CryptoJS.enc.Base64.stringify(encryptedData.ciphertext);
-            console.log('2 encryptedData64:', encryptedData642);
-
-
-            return encryptedData642;
+            return encryptedData64;
         }
     }]);
 

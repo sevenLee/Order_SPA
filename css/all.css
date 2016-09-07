@@ -5892,7 +5892,7 @@ body.registration-distributor-success {
 .paypal-express-remark {
     margin-top: 10px;
 }
-.customer-password-change .input-hint {
+.input-invalid-hint {
     font-size: 13px;
     display: block;
     margin-top: 5px;

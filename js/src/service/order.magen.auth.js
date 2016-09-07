@@ -20,6 +20,15 @@
             return userToken;
         };
 
+        self.setAppToken = function(){
+            Storage.set('spaAppToken', apiParams.appToken2);
+        };
+
+        self.getAppToken = function() {
+            var appToken = Storage.get('spaAppToken');
+            return appToken;
+        };
+
         self.setAppkey = function(){
             Storage.set('spaAppKey', apiParams.appkey);
         };
@@ -28,7 +37,5 @@
             var appkey = Storage.get('spaAppKey');
             return appkey;
         };
-
-
     }]);
 })();

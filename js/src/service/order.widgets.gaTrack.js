@@ -1,9 +1,15 @@
 (function(){
     'use strict';
 
-    var changePWApp = angular.module('changePWApp');
+    var orderWidgetsGaTrack;
 
-    changePWApp.directive('gaTrack',['apiParams', 'Tracking', function(apiParams, Tracking){
+    try{
+        orderWidgetsGaTrack = angular.module('order.widgets.gaTrack');
+    } catch(err) {
+        orderWidgetsGaTrack = angular.module('order.widgets.gaTrack', []);
+    }
+
+    orderWidgetsGaTrack.directive('gaTrack',['apiParams', 'Tracking', function(apiParams, Tracking){
         return {
             restrict: 'A',
             link: function (scope, element, attrs) {

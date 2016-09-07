@@ -1,14 +1,16 @@
 (function () {
     'use strict';
 
-    var changePWApp = angular.module('changePWApp');
+    var resetPWApp = angular.module('resetPWApp');
 
-    changePWApp.run( ['$rootScope', 'MagenLangService', '$translate', 'MagenAuthService', function ($rootScope, MagenLangService, $translate, MagenAuthService) {
+    resetPWApp.run( ['$rootScope', 'MagenLangService', '$translate', 'MagenAuthService', function ($rootScope, MagenLangService, $translate, MagenAuthService) {
         //MagenLangService.setLangCode(langCode);
         //MagenLangService.setRegionCode(regionCode);
 
         MagenAuthService.setUserToken();
         MagenAuthService.setAppkey();
+        MagenAuthService.setAppToken();
+
 
         ga('create', 'UA-63091955-1', 'auto', {
             appName: 'com.lkk.presetationtool'
