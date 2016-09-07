@@ -1,15 +1,15 @@
 (function() {
     'use strict';
-    var changePWApp = angular.module('changePWApp');
+    var resetPWApp = angular.module('resetPWApp');
 
-    changePWApp.directive('changePwForm', ['$interval', 'PersonalCenterAPI', 'DecryptService', 'jwtHelper', 'MagenAuthService', 'apiParams', function($interval, PersonalCenterAPI, DecryptService, jwtHelper, MagenAuthService, apiParams) {
+    resetPWApp.directive('resetPwForm', ['$interval', 'PersonalCenterAPI', 'DecryptService', 'jwtHelper', 'MagenAuthService', 'apiParams', function($interval, PersonalCenterAPI, DecryptService, jwtHelper, MagenAuthService, apiParams) {
         return {
-            templateUrl: 'js/src/components/changePW/change.pw.form.html',
+            templateUrl: 'js/src/components/resetPW/reset.pw.form.html',
             scope: {},
             restrict: 'E',
             bindToController: true,
             controllerAs: 'vm',
-            controller: ['$rootScope', function changePwFormCtrl($rootScope){
+            controller: ['$rootScope', function resetPwFormCtrl($rootScope){
                 var vm = this;
 
                 vm.viewModal = {};
@@ -17,14 +17,12 @@
                 vm.formInvalidMsg = '';
             }],
             link: function(scope, element, attrs){
-                scope.$on('changePw:current', function(event, data){
+                scope.$on('resetPw:current', function(event, data){
                     scope.vm.viewModal.passCode = data;
                 });
-                scope.$on('changePw:new', function(event, data){
-                    scope.vm.viewModal.newPassCode = data;
-                });
 
-                element.on('click', '#change-pw-btn', function(e){
+
+                element.on('click', '#reset-pw-btn', function(e){
                     var that = this;
                     var jqSpan = angular.element(that).find('#submit-button-text');
                     var beforeSubmitTxt = '';
@@ -34,7 +32,7 @@
                     var userId = userTokenObj.uti.userId;
                     var timeoutId;
 
-                    if(!scope.vm.changePwForm.$invalid){
+                    if(!scope.vm.resetPwForm.$invalid){
                         beforeSubmitTxt = jqSpan.text();
                         jqSpan.text('提交中...');
 
@@ -47,19 +45,15 @@
                         var hashPasswordArray = CryptoJS.enc.Utf8.parse(hashPassword.toString());
                         var hashPassword64 = CryptoJS.enc.Base64.stringify(hashPasswordArray);
 
-                        var hashNewPassword = CryptoJS.MD5(userId + apiParams.secret + scope.vm.viewModal.newPassCode);
-                        var hashNewPasswordArray = CryptoJS.enc.Utf8.parse(hashNewPassword.toString());
-                        var hashNewPassword64 = CryptoJS.enc.Base64.stringify(hashNewPasswordArray);
-
                         encryptString = DecryptService.encryptData({
                             userID: userId,
-                            passCode: hashPassword64,
-                            newPassCode: hashNewPassword64
+                            passCode: hashPassword64
                         });
 
-                        PersonalCenterAPI.changePw({
+                        PersonalCenterAPI.resetPw({
                             data: encryptString
                         }).then(function(response){
+                            scope.vm.formInvalid = false;
                             jqSpan.text(beforeSubmitTxt);
                         }, function(error) {
                             jqSpan.text(beforeSubmitTxt);

@@ -1,15 +1,15 @@
 (function () {
     'use strict';
 
-    var orderStorage;
+    var orderServiceStorage;
 
     try{
-        orderStorage = angular.module('order.storage');
+        orderServiceStorage = angular.module('order.service.storage');
     } catch(err) {
-        orderStorage = angular.module('order.storage', []);
+        orderServiceStorage = angular.module('order.service.storage', []);
     }
 
-    orderStorage.service('Storage', ['$rootScope', '$sessionStorage', '$localStorage', function(rootScope, $sessionStorage, $localStorage) {
+    orderServiceStorage.service('Storage', ['$rootScope', '$sessionStorage', '$localStorage', function(rootScope, $sessionStorage, $localStorage) {
         var self = this;
 
         self.storage = $sessionStorage;

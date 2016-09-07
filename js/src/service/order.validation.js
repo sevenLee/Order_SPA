@@ -1,9 +1,15 @@
 (function(){
     'use strict';
 
-    var changePWApp = angular.module('changePWApp');
+    var orderValidation;
 
-    changePWApp.directive('validPwCount',['$compile', function($compile){
+    try{
+        orderValidation = angular.module('order.validation');
+    } catch(err) {
+        orderValidation = angular.module('order.validation', []);
+    }
+
+    orderValidation.directive('validPwCount',['$compile', function($compile){
         return {
             restrict: 'A',
             require: 'ngModel',
@@ -26,7 +32,7 @@
         };
     }]);
 
-    changePWApp.directive('validPwConfirm',function(){
+    orderValidation.directive('validPwConfirm',function(){
         return {
             restrict: 'A',
             require: 'ngModel',
@@ -37,10 +43,6 @@
                 ngModel.$validators.pwConfirm = function(modelValue, viewValue){
                     var value = viewValue;
 
-                    console.log('from valid confirm value:', value);
-                    console.log('from valid confirm value:type:', typeof value);
-                    console.log('scope.validPwNew:', scope.validPwNew);
-
                     if(value) {
                         return value === scope.validPwNew;
                     }else{
@@ -50,7 +52,6 @@
 
                 scope.$watch("validPwNew", function(value){
                     if(value){
-
                         ngModel.$setTouched();
                     }
 

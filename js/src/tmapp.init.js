@@ -16,7 +16,6 @@
         }
 
         $rootScope.$on('$viewContentLoaded', function() {
-            console.log('view ContentLoaded');
         });
     }]);
 })();
