@@ -1,18 +1,15 @@
-
-
-/*
- (function() {
- 'use strict';
- var tmApp = angular.module('teamManageApp');
-
-
- })();
-*/
 (function() {
     'use strict';
-    var tmApp = angular.module('teamManageApp');
 
-    tmApp.service('DistributorsAPI', ['$http', 'apiParams', function($http, apiParams) {
+    var orderAPITMScore;
+
+    try{
+        orderAPITMScore = angular.module('order.apis.tm.score');
+    } catch(err) {
+        orderAPITMScore = angular.module('order.apis.tm.score', []);
+    }
+
+    orderAPITMScore.service('DistributorsAPI', ['$http', 'apiParams', function($http, apiParams) {
         var self = this;
 
         self.getTeam = function() {

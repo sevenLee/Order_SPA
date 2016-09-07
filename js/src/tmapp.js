@@ -7,7 +7,14 @@
         'ngStorage',
         'ngSanitize',
         'pascalprecht.translate',
-        'angular-jwt'
+        'angular-jwt',
+        'order.magen.lang',
+        'order.magen.auth',
+        'order.service.storage',
+        'order.service.crypt',
+        'order.apis.tm.score',
+        'order.apis.tm.tree',
+        'order.filters'
     ]);
 
     tmApp.constant('apiParams', {

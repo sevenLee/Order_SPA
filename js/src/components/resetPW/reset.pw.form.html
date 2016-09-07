@@ -7,6 +7,15 @@
         </ul>
     </li>
 </ul>
+<ul ng-if="vm.successSubmit && !vm.formInvalid" class="messages">
+    <li class="success-msg">
+        <ul>
+            <li>
+                <span ng-bind="vm.successSubmitMsg"></span>
+            </li>
+        </ul>
+    </li>
+</ul>
 
 <form id="form-validate" name="vm.resetPwForm" novalidate>
     <div class="fieldset">

@@ -19,7 +19,7 @@
                 self.screenName = name;
                 var value = typeof apiParams.distributorId === "undefined" ? null :  {'dimension3': apiParams.distributorId};
 
-                //ga('send', 'event', self.screenName, "view",  "view", value);
+                ga('send', 'event', self.screenName, "view",  "view", value);
             } catch (e) {}
         };
 
@@ -27,7 +27,7 @@
             try {
                 if (!self.screenName) return;
 
-                //ga('send', 'event', self.screenName, action, label, value);
+                ga('send', 'event', self.screenName, action, label, value);
             } catch (e) {}
         };
     }]);
