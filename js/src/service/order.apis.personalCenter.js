@@ -18,27 +18,23 @@
         self.changePw = function(data) {
             var config = {
                 headers:{
-                    'x-auth-appkey': MagenAuthService.getAppkey(),
-                    'x-auth-usertoken': MagenAuthService.getUserToken()
+                    'x-auth-appkey': MagenAuthService.getAppkeyCookie(),
+                    'x-auth-usertoken': MagenAuthService.getUserTokenCookie()
                 }
             };
 
-            //return $http.post(apiParams.localPath + 'auth/user/passcode/change', data, config);
-
-            return $http.post(fakePath + 'auth/user/passcode/change', data, config);
+            return $http.post(apiParams.devPath + 'auth/user/passcode/change', data, config);
         };
 
         self.resetPw = function(data) {
             var config = {
                 headers:{
-                    'x-auth-appkey': MagenAuthService.getAppkey(),
-                    'x-auth-apptoken': MagenAuthService.getAppToken()
+                    'x-auth-appkey': MagenAuthService.getAppkeyCookie(),
+                    'x-auth-apptoken': MagenAuthService.getAppTokenCookie()
                 }
             };
 
-            //return $http.post(apiParams.localPath + 'auth/user/passcode/change', data, config);
-
-            return $http.post(fakePath + 'auth/user/passcode/reset', data, config);
+            return $http.post(apiParams.devPath + 'auth/user/passcode/reset', data, config);
         };
     }]);
 })();
