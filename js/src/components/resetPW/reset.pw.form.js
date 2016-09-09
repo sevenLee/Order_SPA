@@ -29,7 +29,7 @@
                     var jqSpan = angular.element(that).find('#submit-button-text');
                     var beforeSubmitTxt = '';
                     var encryptString = '';
-                    var userToken = MagenAuthService.getUserToken();
+                    var userToken = MagenAuthService.getUserTokenCookie();
                     var userTokenObj = jwtHelper.decodeToken(userToken);
                     var userId = userTokenObj.uti.userId;
                     var timeoutId;
