@@ -1,9 +1,5 @@
-(function () {
-    'use strict';
-
-    var resetPWApp = angular.module('resetPWApp');
-
-    resetPWApp.run( ['$rootScope', 'MagenLangService', '$translate', 'MagenAuthService', function ($rootScope, MagenLangService, $translate, MagenAuthService) {
+module.exports = function(app){
+    app.run( ['$rootScope', 'MagenLangService', '$translate', 'MagenAuthService', function ($rootScope, MagenLangService, $translate, MagenAuthService) {
         MagenAuthService.setUserTokenCookie();
         MagenAuthService.setAppkeyCookie();
         MagenAuthService.setAppTokenCookie();
@@ -21,4 +17,4 @@
             //here set ga new page view each time
         });
     }]);
-})();
+};
