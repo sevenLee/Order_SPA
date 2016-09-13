@@ -1,10 +1,7 @@
-(function() {
-    'use strict';
-    var resetPWApp = angular.module('resetPWApp');
-
-    resetPWApp.directive('resetPwForm', ['$interval', 'PersonalCenterAPI', 'DecryptService', 'jwtHelper', 'MagenAuthService', 'apiParams', function($interval, PersonalCenterAPI, DecryptService, jwtHelper, MagenAuthService, apiParams) {
+module.exports = function(app){
+    app.directive('resetPwForm', ['$interval', 'PersonalCenterAPI', 'DecryptService', 'jwtHelper', 'MagenAuthService', 'apiParams', function($interval, PersonalCenterAPI, DecryptService, jwtHelper, MagenAuthService, apiParams) {
         return {
-            templateUrl: 'js/src/components/resetPW/reset.pw.form.html',
+            template: require('./reset.pw.form.html'),
             scope: {},
             restrict: 'E',
             bindToController: true,
@@ -72,4 +69,4 @@
             }
         };
     }]);
-})();
+};

@@ -1,10 +1,7 @@
-(function() {
-    'use strict';
-    var changePWApp = angular.module('changePWApp');
-
-    changePWApp.directive('changePwForm', ['$interval', 'PersonalCenterAPI', 'DecryptService', 'jwtHelper', 'MagenAuthService', 'apiParams', function($interval, PersonalCenterAPI, DecryptService, jwtHelper, MagenAuthService, apiParams) {
+module.exports = function(app){
+    app.directive('changePwForm', ['$interval', 'PersonalCenterAPI', 'DecryptService', 'jwtHelper', 'MagenAuthService', 'apiParams', function($interval, PersonalCenterAPI, DecryptService, jwtHelper, MagenAuthService, apiParams) {
         return {
-            templateUrl: 'js/src/components/changePW/change.pw.form.html',
+            template: require('./change.pw.form.html'),
             scope: {},
             restrict: 'E',
             bindToController: true,
@@ -22,6 +19,7 @@
                 scope.$on('changePw:current', function(event, data){
                     scope.vm.viewModal.passCode = data;
                 });
+
                 scope.$on('changePw:new', function(event, data){
                     scope.vm.viewModal.newPassCode = data;
                 });
@@ -39,11 +37,6 @@
                     if(!scope.vm.changePwForm.$invalid){
                         beforeSubmitTxt = jqSpan.text();
                         jqSpan.text('提交中...');
-
-                        //timeoutId = $interval(function() {
-                        //    jqSpan.text(beforeSubmitTxt);
-                        //    //alert('修改成功');
-                        //}, 1000, 1);
 
                         var hashPassword = CryptoJS.MD5(userId + apiParams.secret + scope.vm.viewModal.passCode);
                         var hashPasswordArray = CryptoJS.enc.Utf8.parse(hashPassword.toString());
@@ -80,4 +73,4 @@
             }
         };
     }]);
-})();
+};
