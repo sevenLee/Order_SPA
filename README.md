@@ -1,7 +1,7 @@
 # OrderApp - SPA
 
 
-server: Express
-client: Angular 1.5
-
+* Server: Express
+* Client: Angular 1.5
+* Webpack 1.12
 
