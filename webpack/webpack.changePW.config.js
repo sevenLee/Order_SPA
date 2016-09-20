@@ -1,10 +1,21 @@
-var webpack = require('webpack');
-var path = require('path');
+var webpack           = require('webpack');
+var path              = require('path');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var rootPath = path.join(__dirname, '..');
+var globalConfig = require('./global.config');
 
+var rootPath = path.join(__dirname, '..');
 var ENV = process.env.npm_lifecycle_event.split(':')[0];
 var isProd = (ENV === 'prod');
+
+var setFreeVar = function(key, value){
+    var env = {};
+    env[key] = JSON.stringify(value);
+    return env;
+};
+
+var setGlobalEnv = function(){
+    return setFreeVar('globalENV', globalConfig[ENV]);
+};
 
 module.exports = function makeWebpackConfig(){
     var config = {};
@@ -16,26 +27,14 @@ module.exports = function makeWebpackConfig(){
             app: './app.changePW.js',
             vendor: [
                 'angular',
+                'oclazyload',
                 'angular-cookies',
-                'angular-jwt',
                 'angular-sanitize',
                 'angular-translate',
                 'angular-translate-loader-static-files',
-                'angular-ui-router',
                 'ngstorage',
                 'html5shiv',
-                'jquery-migrate',
-                'jquery',
-                'moment',
-                'lodash',
-                'crypto-js/core',
-                'crypto-js/enc-base64',
-                'crypto-js/md5',
-                'crypto-js/sha256',
-                'crypto-js/cipher-core',
-                'crypto-js/aes',
-                'crypto-js/mode-ecb',
-                'crypto-js/pad-pkcs7'
+                'jquery-migrate'
             ]
         },
         output: {
@@ -65,10 +64,9 @@ module.exports = function makeWebpackConfig(){
                 '$': "jquery",
                 'window.jQuery': "jquery",
                 'jQuery': "jquery",
-                'moment': "moment",
-                '_': "lodash",
-                'CryptoJS': "crypto-js"
-            })
+                '_': "lodash"
+            }),
+            new webpack.DefinePlugin(setGlobalEnv())
         ],
         devServer: {
             contentBase: './build/changePW'

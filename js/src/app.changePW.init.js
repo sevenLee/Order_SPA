@@ -3,7 +3,7 @@ module.exports = function(app) {
         MagenAuthService.setUserTokenCookie();
         MagenAuthService.setAppkeyCookie();
 
-        ga('create', 'UA-63091955-1', 'auto', {
+        ga('create', globalENV.gaId, 'auto', {
             appName: 'com.lkk.presetationtool'
         });
 
