@@ -9,38 +9,40 @@
     }
 
 
-    orderServiceCrypt.service('DecryptService', ['apiParams', function(apiParams) {
+    orderServiceCrypt.service('DecryptService', function() {
         var self = this;
 
-        self.decryptData = function(encryptedText) {
-            var keyWordArray = CryptoJS.SHA256(apiParams.secret);
-            var encrypted64WordArray = CryptoJS.enc.Base64.parse(encryptedText);
-            var encryptCipher = {ciphertext: encrypted64WordArray};
+        require.ensure([], function () {
+            var CryptoJS = require('crypto-js');
 
-            var decryptedWordArray = CryptoJS.AES.decrypt(encryptCipher, keyWordArray, {
-                mode: CryptoJS.mode.ECB,
-                padding: CryptoJS.pad.Pkcs7
-            });
+            self.decryptData = function(encryptedText) {
+                var keyWordArray = CryptoJS.SHA256(globalENV.secret);
+                var encrypted64WordArray = CryptoJS.enc.Base64.parse(encryptedText);
+                var encryptCipher = {ciphertext: encrypted64WordArray};
 
-            var decryptedObj = JSON.parse(decryptedWordArray.toString(CryptoJS.enc.Utf8));
+                var decryptedWordArray = CryptoJS.AES.decrypt(encryptCipher, keyWordArray, {
+                    mode: CryptoJS.mode.ECB,
+                    padding: CryptoJS.pad.Pkcs7
+                });
 
-            return decryptedObj;
-        };
+                var decryptedObj = JSON.parse(decryptedWordArray.toString(CryptoJS.enc.Utf8));
 
+                return decryptedObj;
+            };
 
-        self.encryptData = function(data) {
-            var keyWordArray = CryptoJS.SHA256(apiParams.secret);
-            var jsonString = JSON.stringify(data);
+            self.encryptData = function(data) {
+                var keyWordArray = CryptoJS.SHA256(globalENV.secret);
+                var jsonString = JSON.stringify(data);
 
-            var encryptedData = CryptoJS.AES.encrypt(jsonString, keyWordArray, {
-                mode: CryptoJS.mode.ECB,
-                padding: CryptoJS.pad.Pkcs7
-            });
+                var encryptedData = CryptoJS.AES.encrypt(jsonString, keyWordArray, {
+                    mode: CryptoJS.mode.ECB,
+                    padding: CryptoJS.pad.Pkcs7
+                });
 
-            var encryptedData64 = CryptoJS.enc.Base64.stringify(encryptedData.ciphertext);
+                var encryptedData64 = CryptoJS.enc.Base64.stringify(encryptedData.ciphertext);
 
-            return encryptedData64;
-        }
-    }]);
-
+                return encryptedData64;
+            }
+        });
+    });
 })();

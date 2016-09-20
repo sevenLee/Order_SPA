@@ -8,7 +8,7 @@
         orderMagenAuth = angular.module('order.magen.auth', []);
     }
 
-    orderMagenAuth.service('MagenAuthService',['Storage', 'apiParams', '$cookies', function(Storage, apiParams, $cookies) {
+    orderMagenAuth.service('MagenAuthService',['Storage', '$cookies', function(Storage, $cookies) {
         var self = this;
 
         self.setExpiredTime = function(expiredTimePeriod) {
@@ -21,7 +21,7 @@
         };
 
         self.setUserToken = function(){
-            Storage.set('spaUserToken', apiParams.userToken2);
+            Storage.set('spaUserToken', globalENV.userToken);
         };
 
         self.getUserToken = function() {
@@ -30,7 +30,7 @@
         };
 
         self.setUserTokenCookie = function(){
-            var usertoken = apiParams.devUserToken;
+            var usertoken = globalENV.userToken;
             var expiredTimePeriod = 86400000*360*30;
             var expired = self.setExpiredTime(expiredTimePeriod);
 
@@ -45,7 +45,7 @@
 
 
         self.setAppToken = function(){
-            Storage.set('spaAppToken', apiParams.appToken2);
+            Storage.set('spaAppToken', globalENV.appToken);
         };
 
         self.getAppToken = function() {
@@ -54,7 +54,7 @@
         };
 
         self.setAppTokenCookie = function(){
-            var apptoken = apiParams.devAppToken;
+            var apptoken = globalENV.appToken;
             var expiredTimePeriod = 86400000*360*30;
             var expired = self.setExpiredTime(expiredTimePeriod);
 
@@ -67,7 +67,7 @@
         };
 
         self.setAppkey = function(){
-            Storage.set('spaAppKey', apiParams.appkey);
+            Storage.set('spaAppKey', globalENV.appKey);
         };
 
         self.getAppkey = function(){
@@ -76,7 +76,7 @@
         };
 
         self.setAppkeyCookie = function(){
-            var appkey = apiParams.appkey;
+            var appkey = globalENV.appKey;
             var expiredTimePeriod = 86400000*360*30;
             var expired = self.setExpiredTime(expiredTimePeriod);
 

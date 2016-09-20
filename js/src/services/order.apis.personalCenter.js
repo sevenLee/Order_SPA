@@ -10,7 +10,7 @@
         orderAPIsPersonalCenter = angular.module('order.apis.personalCenter', []);
     }
 
-    orderAPIsPersonalCenter.service('PersonalCenterAPI', ['$http', 'apiParams', 'MagenAuthService', function($http, apiParams, MagenAuthService) {
+    orderAPIsPersonalCenter.service('PersonalCenterAPI', ['$http', 'MagenAuthService', function($http, MagenAuthService) {
         var self = this;
 
         var fakePath = 'http://43.70.88.222:5000/';
@@ -23,7 +23,7 @@
                 }
             };
 
-            return $http.post(apiParams.devPath + 'auth/user/passcode/change', data, config);
+            return $http.post(globalENV.hostPath + 'auth/user/passcode/change', data, config);
         };
 
         self.resetPw = function(data) {
@@ -34,7 +34,7 @@
                 }
             };
 
-            return $http.post(apiParams.devPath + 'auth/user/passcode/reset', data, config);
+            return $http.post(globalENV.hostPath + 'auth/user/passcode/reset', data, config);
         };
     }]);
 })();

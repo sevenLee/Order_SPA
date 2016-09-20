@@ -1,5 +1,5 @@
 module.exports = function(app){
-    app.directive('resetPwForm', ['$interval', 'PersonalCenterAPI', 'DecryptService', 'jwtHelper', 'MagenAuthService', 'apiParams', function($interval, PersonalCenterAPI, DecryptService, jwtHelper, MagenAuthService, apiParams) {
+    app.directive('resetPwForm', ['$interval', 'PersonalCenterAPI', 'DecryptService', 'jwtHelper', 'MagenAuthService', function($interval, PersonalCenterAPI, DecryptService, jwtHelper, MagenAuthService) {
         return {
             template: require('./reset.pw.form.html'),
             scope: {},
@@ -40,7 +40,7 @@ module.exports = function(app){
                         //    //alert('修改成功');
                         //}, 1000, 1);
 
-                        var hashPassword = CryptoJS.MD5(userId + apiParams.secret + scope.vm.viewModal.passCode);
+                        var hashPassword = CryptoJS.MD5(userId + globalENV.secret + scope.vm.viewModal.passCode);
                         var hashPasswordArray = CryptoJS.enc.Utf8.parse(hashPassword.toString());
                         var hashPassword64 = CryptoJS.enc.Base64.stringify(hashPasswordArray);
 

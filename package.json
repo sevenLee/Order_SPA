@@ -34,7 +34,9 @@
     "jsonwebtoken": "^7.1.8",
     "lodash": "^4.15.0",
     "moment": "^2.8.4",
-    "ngstorage": "^0.3.11"
+    "ngstorage": "^0.3.11",
+    "object-assign": "^4.1.0",
+    "oclazyload": "^1.0.9"
   },
   "devDependencies": {
     "cross-env": "^2.0.1",
