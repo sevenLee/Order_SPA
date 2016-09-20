@@ -1,5 +1,5 @@
 module.exports = function(app){
-    app.directive('changePwForm', ['$interval', 'MagenAuthService', '$ocLazyLoad', '$injector', function($interval, MagenAuthService, $ocLazyLoad, $injector) {
+    app.directive('changePwForm', ['$interval', 'MagenAuthService', '$ocLazyLoad', '$injector', '$q', function($interval, MagenAuthService, $ocLazyLoad, $injector, $q) {
         return {
             template: require('./change.pw.form.html'),
             scope: {},
@@ -71,13 +71,19 @@ module.exports = function(app){
                                     name: 'angular-jwt'
                                 }
                             ]).then(function () {
+                                var deferred = $q.defer();
                                 var DecryptService = $injector.get('DecryptService');
                                 var PersonalCenterAPI = $injector.get('PersonalCenterAPI');
                                 var jwtHelper = $injector.get('jwtHelper');
+                                var parts = userToken.split('.');
+
+                                if(parts[0] === 'test'){
+                                    deferred.reject(new Error('Invalid authentication'));
+                                    return deferred.promise;
+                                }
 
                                 userTokenObj    = jwtHelper.decodeToken(userToken);
                                 userId          = userTokenObj.uti.userId;
-
                                 encryptString = DecryptService.encryptData({
                                     userID: userId,
                                     passCode: hashPassword64,
@@ -97,9 +103,14 @@ module.exports = function(app){
                                     scope.vm.formInvalid = true;
                                     scope.vm.formInvalidMsg = error.data.error.message || 'Submit error';
                                 });
+                            }).catch(function(err){
+                                jqSpan.text(beforeSubmitTxt);
+                                scope.vm.formInvalid    = true;
+                                scope.vm.formInvalidMsg = 'No authentication, test mode';
                             });
                         });
                     } else {
+                        jqSpan.text(beforeSubmitTxt);
                         scope.vm.formInvalid    = true;
                         scope.vm.formInvalidMsg = 'Invalid input';
                     }
