@@ -1,7 +1,7 @@
 var webpack           = require('webpack');
 var path              = require('path');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var globalConfig = require('./global.config');
+var globalConfig = require('./global.config.vars');
 
 var rootPath = path.join(__dirname, '..');
 var ENV = process.env.npm_lifecycle_event.split(':')[0];
